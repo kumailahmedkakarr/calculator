@@ -1,0 +1,142 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Background Image */
+body {
+  background: url("Assests/IMG-20250823-WA0007.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+
+/* Transparent overlay boxes */
+.section, .home-box {
+  margin: 30px auto;
+  padding: 40px;
+  background: rgba(0, 0, 50, 0.8); /* dark-blue transparent */
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* Navbar */
+.navbar {
+  background: rgba(0, 0, 50, 0.8);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar .logo {
+  font-size: 40px;
+  font-weight: bold;
+  color: #ffcc00;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  font-size: 28px;
+  gap: 20px;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.navbar ul li a:hover {
+  color: #ffcc00;
+}
+
+/* Forms */
+form input, form select, form button {
+  margin: 10px;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+}
+
+form button {
+  background: #ffcc00;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #ffaa00;
+}
+
+<style>
+  #frontPageOutput {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background: #111;
+    color: #fff;
+    text-align: center;
+  }
+  #frontPageOutput img {
+    max-width: 150px;
+    margin: 10px;
+  }
+</style>
+
+
+
+
+
+/* Home Section */
+.home-box {
+  background: url("Assests/IMG-20250823-WA0007.jpg") no-repeat center center fixed;         /* solid white */
+  color: #ffffffef;               /* black text */
+  width: 100%;               /* full width */
+  border-radius: 0;          /* no rounded corners */
+  padding: 40px 20px;
+  margin: 0;                 /* remove side spacing */
+}
+
+.home-box h1 {
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.home-profile {
+  margin-top: 20px;
+  max-width: 180px;
+  border-radius: 50%;        /* circular image */
+  border: 4px solid #003366; /* dark blue border */
+}
+/* Footer */
+.footer {
+  background: rgba(0, 0, 50, 0.9);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+.footer .social-links {
+  margin: 10px 0;
+}
+
+.footer .social-links a {
+  color: #ffcc00;
+  font-size: 28px;
+  margin: 0 12px;
+  transition: color 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: #ffaa00;
+}

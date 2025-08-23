@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BUITEMS Calculator Hub</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">BUITEMS</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#gpa">GPA</a></li>
+      <li><a href="#cgpa">CGPA</a></li>
+      <li><a href="#aggregate">Aggregate</a></li>
+      <li><a href="#frontpage">Front Page</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home -->
+  <section id="home" class="home-box">
+    <!-- Profile Image -->
+    <img src="Assests/Screenshot 2025-08-23 212017.png" alt="Profile" class="home-profile">
+    <h1>Welcome to BUITEMS Calculator Hub</h1><br>
+    <p>Here you can calculate GPA, CGPA, Aggregate and generate your front page with profile & BUITEMS logo.</p>
+    <p>📚 🖊️ 🧮</p>
+  </section>
+  <br><br/>
+
+  <!-- GPA Calculator -->
+  <section id="gpa" class="section">
+    <h2>GPA Calculator</h2>
+    <form id="gpaForm">
+      <div id="gpaInputs"></div>
+      <button type="button" onclick="addGPARow()">Add Subject</button>
+      <button type="submit">Calculate GPA</button>
+    </form>
+    <p id="gpaResult"></p>
+  </section>
+  <br><br/>
+
+  <!-- CGPA Calculator -->
+  <section id="cgpa" class="section">
+    <h2>CGPA Calculator</h2>
+    <form id="cgpaForm">
+      <div id="cgpaInputs"></div>
+      <button type="button" onclick="addCGPARow()">Add Semester</button>
+      <button type="submit">Calculate CGPA</button>
+    </form>
+    <p id="cgpaResult"></p>
+  </section>
+  <br><br/>
+
+  <!-- Aggregate Calculator -->
+  <section id="aggregate" class="section">
+    <h2>Aggregate Calculator</h2>
+    <form id="aggregateForm">
+      <input type="number" id="matric" placeholder="Matric %" required>
+      <input type="number" id="inter" placeholder="Inter %" required>
+      <input type="number" id="test" placeholder="Test %" required>
+      <button type="submit">Calculate Aggregate</button>
+    </form>
+    <p id="aggregateResult"></p>
+  </section>
+  <br><br/>
+
+  <!-- Front Page Generator -->
+  <section id="frontpage" class="section">
+    <h2>Front Page Generator</h2>
+    <form>
+      <input type="text" id="studentName" placeholder="Your Name" required>
+      <input type="text" id="rollNo" placeholder="Roll No" required>
+      <input type="text" id="subject" placeholder="Subject" required>
+      <input type="file" id="profilePic" accept="image/*">
+      <label><input type="checkbox" id="includeLogo"> Include BUITEMS Logo</label>
+      <button type="button" onclick="generateFrontPage()">Generate</button>
+    </form>
+    <div id="frontPageOutput"></div>
+  </section>
+  <br><br/>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Connect with me:</p> <br>
+    <p>If you notice any discrepancies, kindly contact us for assistance.</p>
+    <div class="social-links">
+      <a href="https://wa.me/qr/7JQK3VRBR4AVD1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:kumailahmedofficial@gmail.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/kumail-ahmed-9351b2357" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <p>&copy; 2025 BUITEMS Calculator Hub | Designed by Kumail Ahmed BSIT 3rd Semester(A)</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
