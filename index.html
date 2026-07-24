@@ -2,8 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BUITEMS Calculator Hub</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -12,8 +18,9 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo">BUITEMS</div>
-    <ul>
+    <div class="logo">BUITEMS <span>Calculator Hub</span></div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+    <ul id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#gpa">GPA</a></li>
       <li><a href="#cgpa">CGPA</a></li>
@@ -24,76 +31,137 @@
 
   <!-- Home -->
   <section id="home" class="home-box">
-    <!-- Profile Image -->
-    <img src="Assests/Screenshot 2025-08-23 212017.png" alt="Profile" class="home-profile">
-    <h1>Welcome to BUITEMS Calculator Hub</h1><br>
-    <p>Here you can calculate GPA, CGPA, Aggregate and generate your front page with profile & BUITEMS logo.</p>
-    <p>📚 🖊️ 🧮</p>
+    <div class="home-inner">
+      <div class="home-text">
+        <p class="eyebrow">BSIT &middot; BUITEMS Quetta</p>
+        <h1>Every number that gets<br>you to graduation.</h1>
+        <p class="home-sub">GPA, CGPA, merit aggregate and your assignment front page &mdash; calculated the same way BUITEMS does it, in one place.</p>
+        <div class="stat-row">
+          <div class="stat-chip"><span>4.00</span>grade scale</div>
+          <div class="stat-chip"><span>10 / 40 / 50</span>aggregate weights</div>
+          <div class="stat-chip"><span>&infin;</span>semesters tracked</div>
+        </div>
+      </div>
+      <div class="home-photo">
+        <img src="Assests/Screenshot 2025-08-23 212017.png" alt="Profile" class="home-profile">
+      </div>
+    </div>
   </section>
-  <br><br/>
 
   <!-- GPA Calculator -->
   <section id="gpa" class="section">
-    <h2>GPA Calculator</h2>
+    <div class="section-head">
+      <span class="tab-index">01</span>
+      <h2>GPA Calculator</h2>
+      <p class="section-note">Add every subject from this semester with its grade and credit hours.</p>
+    </div>
+
     <form id="gpaForm">
+      <div class="ledger-head gpa-cols">
+        <span>Subject</span><span>Grade</span><span>Credit Hrs</span><span></span>
+      </div>
       <div id="gpaInputs"></div>
-      <button type="button" onclick="addGPARow()">Add Subject</button>
-      <button type="submit">Calculate GPA</button>
+      <div class="form-actions">
+        <button type="button" class="btn-ghost" onclick="addGPARow()"><i class="fas fa-plus"></i> Add Subject</button>
+        <button type="submit" class="btn-solid">Calculate GPA</button>
+      </div>
     </form>
-    <p id="gpaResult"></p>
+    <div id="gpaResult" class="result-stamp" hidden></div>
   </section>
-  <br><br/>
 
   <!-- CGPA Calculator -->
   <section id="cgpa" class="section">
-    <h2>CGPA Calculator</h2>
+    <div class="section-head">
+      <span class="tab-index">02</span>
+      <h2>CGPA Calculator</h2>
+      <p class="section-note">Add each completed semester's GPA and its total credit hours.</p>
+    </div>
+
     <form id="cgpaForm">
+      <div class="ledger-head cgpa-cols">
+        <span>Semester GPA</span><span>Credit Hrs</span><span></span>
+      </div>
       <div id="cgpaInputs"></div>
-      <button type="button" onclick="addCGPARow()">Add Semester</button>
-      <button type="submit">Calculate CGPA</button>
+      <div class="form-actions">
+        <button type="button" class="btn-ghost" onclick="addCGPARow()"><i class="fas fa-plus"></i> Add Semester</button>
+        <button type="submit" class="btn-solid">Calculate CGPA</button>
+      </div>
     </form>
-    <p id="cgpaResult"></p>
+    <div id="cgpaResult" class="result-stamp" hidden></div>
   </section>
-  <br><br/>
 
   <!-- Aggregate Calculator -->
   <section id="aggregate" class="section">
-    <h2>Aggregate Calculator</h2>
+    <div class="section-head">
+      <span class="tab-index">03</span>
+      <h2>Aggregate Calculator</h2>
+      <p class="section-note">Standard university-entry weighting: Matric 10% &middot; Intermediate 40% &middot; Entry Test 50%.</p>
+    </div>
+
     <form id="aggregateForm">
-      <input type="number" id="matric" placeholder="Matric %" required>
-      <input type="number" id="inter" placeholder="Inter %" required>
-      <input type="number" id="test" placeholder="Test %" required>
-      <button type="submit">Calculate Aggregate</button>
+      <div class="weight-inputs">
+        <label class="weight-field">
+          <span>Matric %</span>
+          <input type="number" id="matric" min="0" max="100" step="0.01" required>
+          <em>weight 10%</em>
+        </label>
+        <label class="weight-field">
+          <span>Inter %</span>
+          <input type="number" id="inter" min="0" max="100" step="0.01" required>
+          <em>weight 40%</em>
+        </label>
+        <label class="weight-field">
+          <span>Test %</span>
+          <input type="number" id="test" min="0" max="100" step="0.01" required>
+          <em>weight 50%</em>
+        </label>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn-solid">Calculate Aggregate</button>
+      </div>
     </form>
-    <p id="aggregateResult"></p>
+    <div id="aggregateResult" class="result-stamp" hidden></div>
   </section>
-  <br><br/>
 
   <!-- Front Page Generator -->
   <section id="frontpage" class="section">
-    <h2>Front Page Generator</h2>
-    <form>
-      <input type="text" id="studentName" placeholder="Your Name" required>
-      <input type="text" id="rollNo" placeholder="Roll No" required>
-      <input type="text" id="subject" placeholder="Subject" required>
-      <input type="file" id="profilePic" accept="image/*">
-      <label><input type="checkbox" id="includeLogo"> Include BUITEMS Logo</label>
-      <button type="button" onclick="generateFrontPage()">Generate</button>
+    <div class="section-head">
+      <span class="tab-index">04</span>
+      <h2>Front Page Generator</h2>
+      <p class="section-note">Fill this in once, and reuse it for every assignment cover page.</p>
+    </div>
+
+    <form id="frontPageForm" onsubmit="return false;">
+      <div class="fp-grid">
+        <input type="text" id="studentName" placeholder="Your Name" required>
+        <input type="text" id="rollNo" placeholder="Roll No" required>
+        <input type="text" id="subject" placeholder="Subject" required>
+        <label class="file-field">
+          <i class="fas fa-image"></i> <span id="fileLabel">Upload profile photo</span>
+          <input type="file" id="profilePic" accept="image/*">
+        </label>
+      </div>
+      <label class="checkbox-field">
+        <input type="checkbox" id="includeLogo"> Include BUITEMS Logo
+      </label>
+      <div class="form-actions">
+        <button type="button" class="btn-solid" onclick="generateFrontPage()">Generate</button>
+        <button type="button" class="btn-ghost" id="printFrontPage" onclick="window.print()"><i class="fas fa-print"></i> Print / Save PDF</button>
+      </div>
     </form>
     <div id="frontPageOutput"></div>
   </section>
-  <br><br/>
 
   <!-- Footer -->
   <footer class="footer">
-    <p>Connect with me:</p> <br>
-    <p>If you notice any discrepancies, kindly contact us for assistance.</p>
+    <p>Connect with me</p>
+    <p class="footer-note">If you notice any discrepancies, kindly contact us for assistance.</p>
     <div class="social-links">
-      <a href="https://wa.me/qr/7JQK3VRBR4AVD1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="mailto:kumailahmedofficial@gmail.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/kumail-ahmed-9351b2357" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://wa.me/qr/7JQK3VRBR4AVD1" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="mailto:kumailahmedofficial@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/kumail-ahmed-9351b2357" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
-    <p>&copy; 2025 BUITEMS Calculator Hub | Designed by Kumail Ahmed BSIT 3rd Semester(A)</p>
+    <p class="footer-credit">&copy; 2025 BUITEMS Calculator Hub &middot; Designed by Kumail Ahmed, BSIT 5th Semester (A)</p>
   </footer>
 
   <script src="script.js"></script>
